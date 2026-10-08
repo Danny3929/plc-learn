@@ -1,0 +1,19 @@
+# Allowlist: only the website files are published. Everything else
+# (Electron build, node_modules, dist, research notes...) stays local.
+/*
+!/.gitignore
+!/index.html
+!/app.js
+!/sim.js
+!/figures*.js
+!/parts.js
+!/plants.js
+!/widgets*.js
+!/style.css
+!/sw.js
+!/manifest.json
+!/icon-*.png
+!/README.md
+!/content/
+!/publish.ps1
+!/check.ps1

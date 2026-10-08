@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PLC Learn: TIA Portal</title>
+<meta name="theme-color" content="#ff8a1f">
+<meta name="description" content="Learn PLC programming with Siemens TIA Portal: lessons, figures and a ladder simulator.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side" id="side">
+    <button class="side-close" id="sideclose" aria-label="Close the lesson list">✕</button>
+    <div class="brand">PLC Learn <span>Siemens TIA Portal · S7-1200 / S7-1500</span></div>
+    <div class="hud" id="hud"></div>
+    <nav id="nav"></nav>
+    <div class="side-foot"><a class="link" href="#/projects">Projects</a><a class="link" href="#/glossary">Glossary</a><button id="reset" class="link">Reset all progress</button></div>
+  </aside>
+  <main class="main">
+    <button class="menu" id="menu" aria-label="Open the lesson list" aria-controls="side" aria-expanded="false">☰ Lessons</button>
+    <article id="lesson"></article>
+  </main>
+</div>
+<div class="scrim" id="scrim"></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="figures.js"></script>
+<script src="figures2.js"></script>
+<script src="parts.js"></script>
+<script src="figures3.js"></script>
+<script src="figures4.js"></script>
+<script src="figures5.js"></script>
+<script src="figures6.js"></script>
+<script src="figures7.js"></script>
+<script src="sim.js"></script>
+<script src="plants.js"></script>
+<script src="widgets.js"></script>
+<script src="widgets2.js"></script>
+<script src="widgets3.js"></script>
+<script src="content/m0_foundations.js"></script>
+<script src="content/m1_tia.js"></script>
+<script src="content/m2_ladder.js"></script>
+<script src="content/m3_structure.js"></script>
+<script src="content/m4_data.js"></script>
+<script src="content/m5_hmi.js"></script>
+<script src="content/m6_networks.js"></script>
+<script src="content/m7_advanced.js"></script>
+<script src="content/m8_professional.js"></script>
+<script src="content/m9_field.js"></script>
+<script src="content/m10_programming.js"></script>
+<script src="content/m11_practice.js"></script>
+<script src="content/m12_beyond.js"></script>
+<script src="content/m13_toolkit.js"></script>
+<script src="content/m14_projects.js"></script>
+<script src="content/glossary.js"></script>
+<script src="app.js"></script>
+<script>
+if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function () {});
+</script>
+</body>
+</html>
+
+
