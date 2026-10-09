@@ -365,6 +365,28 @@
     if (dx < 0 && navIsOpen()) closeNav();
     else if (dx > 0 && !navIsOpen() && s0.x < 24) setNav(true);
   }, { passive: true });
+  // ---------- phone: tap a figure to see it full size ----------
+  // Figures are wide drawings, so on a phone they scroll sideways at a readable size. Tapping one opens it
+  // in a full-screen view you can pan and pinch-zoom; tap the X (or press Escape) to close.
+  function closeFigZoom() { var z = document.querySelector(".figzoom"); if (z && z.parentNode) z.parentNode.removeChild(z); document.body.classList.remove("zoom-open"); }
+  function openFigZoom(svg) {
+    closeFigZoom();
+    var z = document.createElement("div"); z.className = "figzoom";
+    var close = document.createElement("button"); close.type = "button"; close.className = "figzoom-x"; close.setAttribute("aria-label", "Close the enlarged figure"); close.textContent = "✕";
+    close.addEventListener("click", closeFigZoom);
+    var box = document.createElement("div"); box.className = "figzoom-box";
+    var copy = svg.cloneNode(true); copy.removeAttribute("style"); copy.setAttribute("class", svg.getAttribute("class") || "figsvg");
+    var vb = (svg.getAttribute("viewBox") || "").split(/[ ,]+/), w = parseFloat(vb[2]) || 900;
+    copy.style.width = Math.round(Math.max(900, w * 1.25)) + "px"; copy.style.maxWidth = "none"; copy.style.minWidth = "0";
+    box.appendChild(copy); z.appendChild(box); z.appendChild(close);
+    document.body.appendChild(z); document.body.classList.add("zoom-open");
+  }
+  $("lesson").addEventListener("click", function (e) {
+    var svg = e.target.closest && e.target.closest("figure.fig .figsvg");
+    if (svg && window.innerWidth <= 800) openFigZoom(svg);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeFigZoom(); });
+
   $("reset").addEventListener("click", function () {
     if (confirm("Erase all XP, badges, progress, notes and quiz answers?")) { state = blank(); save(); route(); }
   });

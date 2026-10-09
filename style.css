@@ -387,3 +387,36 @@ figure.fig .figsvg.real { border-radius: 6px; max-width: 920px; }
   .menu { min-height: 44px; }
   .nav-item, .side-foot .link { min-height: 40px; }
 }
+
+/* ---------- phone hardening (differences found by comparing with the ROS 2 app and the PLC sim controls) ---------- */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+a, button, .btn, .card, .simbtn, .bit, label { -webkit-tap-highlight-color: transparent; }
+button, .btn, .simbtn, .bit, .card, .nav-item, summary { touch-action: manipulation; }
+/* press-and-hold controls (momentary push buttons, bit toggles, scan buttons) must not select text or show the share menu */
+.simbtn, .simview button, .simreset, .bit, .pidbtn button, .bitpre button, .spb, .quiz button.opt, .btn, .menu {
+  -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+}
+/* hover effects stick after a tap on a touch screen */
+@media (hover: none) {
+  .card:hover, .quiz button.opt:hover:not(:disabled) { transform: none; box-shadow: none; }
+  .btn:hover { filter: none; }
+  .cmd button:hover, .simreset:hover, .pidbtn button:hover, .bitpre button:hover, .spb:hover { background: inherit; color: inherit; border-color: inherit; box-shadow: none; }
+}
+@media (max-width: 800px) {
+  .app { grid-template-columns: minmax(0, 1fr); }
+  .side { height: 100vh; height: 100dvh; }
+  /* below 16px, iPhones zoom the whole page when a field gets focus */
+  input, select, textarea { font-size: 16px !important; }
+  figure.fig { cursor: zoom-in; }
+  figure.fig figcaption::after { content: "  Tap the picture to enlarge."; color: var(--accent); font-weight: 700; }
+}
+@supports (padding: max(0px)) {
+  .main { padding-bottom: max(70px, calc(env(safe-area-inset-bottom) + 40px)); }
+  .toasts { bottom: max(16px, env(safe-area-inset-bottom)); }
+}
+/* full-screen figure viewer */
+body.zoom-open { overflow: hidden; }
+.figzoom { position: fixed; inset: 0; z-index: 30; background: var(--panel); display: flex; flex-direction: column; }
+.figzoom-box { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; padding: 56px 12px 24px; touch-action: pan-x pan-y pinch-zoom; }
+.figzoom-box .figsvg { display: block; margin: 0 auto; height: auto; }
+.figzoom-x { position: fixed; top: max(10px, env(safe-area-inset-top)); right: 10px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--ink); background: var(--bg); color: var(--ink); font-size: 20px; cursor: pointer; z-index: 31; }
