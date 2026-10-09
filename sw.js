@@ -1,5 +1,5 @@
 // Bump CACHE whenever any file changes so installed copies pick up the update.
-const CACHE = "plc-learn-v3";
+const CACHE = "plc-learn-v4";
 const FILES = [
   "./",
   "./index.html",
@@ -8,7 +8,7 @@ const FILES = [
   "./icon-192.png",
   "./icon-512.png",
   "./icon-maskable-512.png",
-  "./content/backup.js", "./content/review.js",
+  "./content/backup.js", "./content/review.js", "./content/install.js",
   "./figures.js",
   "./figures2.js",
   "./parts.js",

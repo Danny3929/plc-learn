@@ -63,8 +63,10 @@
 <script src="content/glossary.js"></script>
 <script src="content/backup.js"></script>
 <script src="content/review.js"></script>
+<script src="content/install.js"></script>
 <script src="app.js"></script>
 <script>AppBackup.init({ app: "plc-learn", title: "PLC Learn", key: "tialearn.v1" });</script>
+<script>AppInstall.init({ title: "PLC Learn" });</script>
 <script>
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function () {});
 </script>
