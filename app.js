@@ -130,6 +130,8 @@
     var html = "";
     var hh = location.hash;
     $("home").classList.toggle("active", !activeId && (hh === "" || hh === "#" || hh === "#/"));
+    $("reviewlink").classList.toggle("active", activeId === "review");
+    $("builderlink").classList.toggle("active", activeId === "builder");
     mods.forEach(function (m) {
       var has = m.lessons && m.lessons.length, n = has ? m.lessons.filter(function (l) { return state.done[l.id]; }).length : 0;
       html += '<div class="mod' + (has ? "" : " soon") + '"><h3>' + esc(m.title) +
@@ -239,7 +241,7 @@
       "<p>From the scan cycle to state machines, with an illustration for every idea and a <b>live ladder simulator</b> where you flip switches and watch power flow. Earn XP, level up, keep a daily streak.</p>" + rung + "</div>" +
       (next ? '<div class="actions"><a class="btn" href="#/' + next.id + '">' + (started ? "Continue" : "Start") + " · " + esc(next.id + " " + next.title) + "</a></div>" : "<p><b>You have finished every available lesson. More are coming.</b></p>") +
       '<div class="cards">' + cards + '<a class="card" href="#/projects"><div class="n">📁</div><h3>Projects</h3><p>Build-it projects: bottle packing line with a WinCC panel, an operator screen design, a portfolio write-up.</p><div class="pb"><i style="width:' + Math.round(((mods.filter(function (m) { return m.order === 14; })[0] || { lessons: [] }).lessons.filter(function (l) { return state.done[l.id]; }).length) / 3 * 100) + '%"></i></div><div class="ct">3 projects</div></a></div>' +
-      "<p>Wrong answers never cost XP, so experiment. Menu names in TIA Portal shift slightly between versions (V17 to V21); if something looks different on your screen, tell Claude what you see.</p></div>";
+      "<p>Wrong answers never cost XP, so experiment. Menu names in TIA Portal shift slightly between versions (V17 to V21); if something looks different on your screen, tell Claude what you see.</p><p><a class=\"btn\" href=\"#/review\">🔁 Take a review quiz</a> <a class=\"btn\" href=\"#/builder\">🛠️ Open the ladder builder</a> <span>Five quick questions from lessons you have finished.</span></p><p><button class=\"link\" data-backup>Back up or restore your progress</button> (it is saved on this device only)</p></div>";
   }
 
   var PROJ = { P1: ["Build", "PLC + HMI", "KTP600 panel, FB2 simulation, button and movement animations"], P2: ["Design", "HMI design", "Tag table, wireframe and faceplate for a process overview screen"], P3: ["Document", "Portfolio", "Pick a finished project and write it up for employers"] };
@@ -256,6 +258,25 @@
     $("lesson").innerHTML = '<div class="welcome"><div class="hero"><div class="kicker"><b>Projects</b><span>Build it, then document it</span></div><h1>Projects</h1>' +
       "<p>Lessons teach one idea at a time. Projects make you combine them: a brief, a build plan, an acceptance checklist and a write-up. Finish a project and tick its checklist before you mark it complete.</p></div>" +
       '<div class="cards">' + cards + "</div><h2>More projects inside the course</h2><ul>" + more + "</ul></div>";
+    window.scrollTo(0, 0); closeNav();
+  }
+
+  function renderReview() {
+    currentId = "review"; renderNav("review"); renderHud();
+    var mainEl = document.querySelector(".main"); if (mainEl) mainEl.classList.remove("home");
+    window.AppReview.render($("lesson"), {
+      lessons: lessons, isDone: function (id) { return !!state.done[id]; },
+      award: award, confetti: confetti, esc: esc, xp: 10
+    });
+    window.scrollTo(0, 0); closeNav();
+  }
+
+  function renderBuilder() {
+    currentId = "builder"; renderNav("builder"); renderHud();
+    $("lesson").innerHTML = '<h1>Ladder builder</h1><div class="meta">Free play · works on a phone</div>' +
+      "<p>Build your own ladder program: add switches and lamps, then make rungs from contacts, coils and timers. The simulator below runs it live, so flip a switch and watch the power flow. Your program is saved on this device.</p>" +
+      '<div id="bldhost"></div>';
+    window.Builder.mount($("bldhost"), { onTouch: function () { award("sim:builder", XP.sim, "ladder builder played"); } });
     window.scrollTo(0, 0); closeNav();
   }
 
@@ -344,6 +365,8 @@
   function route() {
     if (location.hash === "#/glossary") return renderGlossary();
     if (location.hash === "#/projects") return renderProjects();
+    if (location.hash === "#/review") return renderReview();
+    if (location.hash === "#/builder") return renderBuilder();
     var m = location.hash.match(/^#\/(.+)$/);
     if (m) renderLesson(decodeURIComponent(m[1])); else renderWelcome();
   }

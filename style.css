@@ -429,3 +429,45 @@ a.menu.homebtn { text-decoration: none; margin-right: 8px; }
   .menu { align-items: center; }
   a.menu.homebtn, button.menu { display: inline-flex; }
 }
+
+/* ---------- review quiz ---------- */
+.review-link { font-weight: 700; }
+.rvbar { margin-top: 16px; font-size: 14px; }
+.rvout .why { margin-top: 10px; }
+.rvout .btn, .rvagain { margin-top: 6px; }
+
+/* long file paths and commands inside a sentence must wrap instead of widening the page on a phone */
+code { overflow-wrap: anywhere; }
+
+/* ---------- free-play ladder builder ---------- */
+.bld { margin: 18px 0; }
+.bld h3 { margin: 22px 0 8px; font: 800 13px var(--mono); letter-spacing: .08em; text-transform: uppercase; } .bld h3 small { font: 500 12px var(--mono); color: var(--muted); text-transform: none; letter-spacing: 0; margin-left: 6px; }
+.bld select, .bld input { font: 16px var(--mono); background: var(--bg); color: var(--ink); border: 1px solid var(--ink); border-radius: 4px; padding: 8px 10px; min-height: 44px; max-width: 100%; box-sizing: border-box; }
+.bld-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 12px; border: 1px dashed var(--ink); background: var(--panel); }
+.bld-top label { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font: 700 13px var(--mono); }
+.bld-parts { display: grid; gap: 6px; }
+.bld-part { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--line); background: var(--panel); border-radius: 4px; }
+.bld-ico { font-size: 20px; } .bld-name { flex: 1; min-width: 0; } .bld-addr { font: 12px var(--mono); color: var(--muted); }
+.bld-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; }
+.bld button.bld-add, .bld button.bld-mini { min-height: 44px; padding: 0 14px; border: 1px dashed var(--ink); background: var(--panel); color: var(--ink); border-radius: 4px; font: 700 13px var(--mono); cursor: pointer; }
+.bld button.bld-mini { min-height: 36px; border-style: solid; }
+.bld button.bld-main { background: var(--accent); color: var(--accent-ink); border: 1px solid var(--accent); }
+.bld button.bld-x { width: 44px; min-height: 44px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); border-radius: 4px; cursor: pointer; font-size: 16px; }
+.bld-rung { margin: 12px 0; padding: 10px 12px; border: 1px solid var(--ink); background: var(--panel); box-shadow: 4px 4px 0 var(--line); }
+.bld-rh { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.bld-terms { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 8px; }
+.bld-term { padding: 8px; border: 1px solid var(--line); border-left: 4px solid var(--accent); background: var(--bg); display: grid; gap: 6px; }
+.bld-contact { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.bld-and, .bld-or { font: 800 11px var(--mono); letter-spacing: .1em; color: var(--accent); align-self: center; }
+.bld-out { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); }
+.bld-arrow { font: 800 20px var(--mono); color: var(--accent); }
+.bld-sec { display: inline-flex; gap: 6px; align-items: center; font: 700 13px var(--mono); } .bld-sec input { width: 90px; }
+.bld-todo { margin-top: 14px; padding: 10px 14px; background: var(--warn-bg); border: 1px solid var(--warn); } .bld-todo ul { margin: 6px 0 0; padding-left: 20px; }
+.bld-hint { color: var(--muted); font: 13px var(--mono); }
+.bld-sim { margin-top: 10px; }
+
+.bld-parts { grid-template-columns: minmax(0, 1fr); }
+.bld-part, .bld-term, .bld-contact, .bld-out, .bld-rung { min-width: 0; max-width: 100%; box-sizing: border-box; }
+.bld-contact select { max-width: 100%; min-width: 0; }
+.bld-name { width: 100%; }
+@media (max-width: 800px) { .bld select { max-width: calc(100vw - 90px); } }

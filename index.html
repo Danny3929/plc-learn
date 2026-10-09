@@ -17,6 +17,8 @@
     <button class="side-close" id="sideclose" aria-label="Close the lesson list">✕</button>
     <a class="brand" href="#/" title="Back to the home page">PLC Learn <span>Siemens TIA Portal · S7-1200 / S7-1500</span></a>
     <a class="nav-item home-link" id="home" href="#/">🏠 Home</a>
+    <a class="nav-item review-link" id="reviewlink" href="#/review">🔁 Review quiz</a>
+    <a class="nav-item review-link" id="builderlink" href="#/builder">🛠️ Ladder builder</a>
     <div class="hud" id="hud"></div>
     <nav id="nav"></nav>
     <div class="side-foot"><a class="link" href="#/projects">Projects</a><a class="link" href="#/glossary">Glossary</a><button id="reset" class="link">Reset all progress</button></div>
@@ -42,6 +44,7 @@
 <script src="widgets.js"></script>
 <script src="widgets2.js"></script>
 <script src="widgets3.js"></script>
+<script src="widgets4.js"></script>
 <script src="content/m0_foundations.js"></script>
 <script src="content/m1_tia.js"></script>
 <script src="content/m2_ladder.js"></script>
@@ -58,7 +61,10 @@
 <script src="content/m13_toolkit.js"></script>
 <script src="content/m14_projects.js"></script>
 <script src="content/glossary.js"></script>
+<script src="content/backup.js"></script>
+<script src="content/review.js"></script>
 <script src="app.js"></script>
+<script>AppBackup.init({ app: "plc-learn", title: "PLC Learn", key: "tialearn.v1" });</script>
 <script>
 if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(function () {});
 </script>
