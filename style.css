@@ -420,3 +420,12 @@ body.zoom-open { overflow: hidden; }
 .figzoom-box { flex: 1; overflow: auto; -webkit-overflow-scrolling: touch; padding: 56px 12px 24px; touch-action: pan-x pan-y pinch-zoom; }
 .figzoom-box .figsvg { display: block; margin: 0 auto; height: auto; }
 .figzoom-x { position: fixed; top: max(10px, env(safe-area-inset-top)); right: 10px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--ink); background: var(--bg); color: var(--ink); font-size: 20px; cursor: pointer; z-index: 31; }
+
+/* ---------- way back to the home page ---------- */
+a.brand { color: inherit; text-decoration: none; cursor: pointer; }
+.home-link { margin-top: 10px; font-weight: 700; }
+a.menu.homebtn { text-decoration: none; margin-right: 8px; }
+@media (max-width: 800px) {
+  .menu { align-items: center; }
+  a.menu.homebtn, button.menu { display: inline-flex; }
+}

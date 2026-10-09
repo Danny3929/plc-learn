@@ -15,12 +15,14 @@
 <div class="app">
   <aside class="side" id="side">
     <button class="side-close" id="sideclose" aria-label="Close the lesson list">✕</button>
-    <div class="brand">PLC Learn <span>Siemens TIA Portal · S7-1200 / S7-1500</span></div>
+    <a class="brand" href="#/" title="Back to the home page">PLC Learn <span>Siemens TIA Portal · S7-1200 / S7-1500</span></a>
+    <a class="nav-item home-link" id="home" href="#/">🏠 Home</a>
     <div class="hud" id="hud"></div>
     <nav id="nav"></nav>
     <div class="side-foot"><a class="link" href="#/projects">Projects</a><a class="link" href="#/glossary">Glossary</a><button id="reset" class="link">Reset all progress</button></div>
   </aside>
   <main class="main">
+    <a class="menu homebtn" href="#/" aria-label="Back to the home page">🏠 Home</a>
     <button class="menu" id="menu" aria-label="Open the lesson list" aria-controls="side" aria-expanded="false">☰ Lessons</button>
     <article id="lesson"></article>
   </main>

@@ -128,6 +128,8 @@
 
   function renderNav(activeId) {
     var html = "";
+    var hh = location.hash;
+    $("home").classList.toggle("active", !activeId && (hh === "" || hh === "#" || hh === "#/"));
     mods.forEach(function (m) {
       var has = m.lessons && m.lessons.length, n = has ? m.lessons.filter(function (l) { return state.done[l.id]; }).length : 0;
       html += '<div class="mod' + (has ? "" : " soon") + '"><h3>' + esc(m.title) +
